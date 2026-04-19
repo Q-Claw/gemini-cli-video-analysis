@@ -2,9 +2,9 @@
 name: gemini-cli-video-analysis
 description: Analyze local video files with Gemini CLI, using reliable multimodal file injection and a clean workspace copy to avoid path/ignore issues.
 version: 1.0.0
-author: Q-Claw
+author: TypQxQ
 license: MIT
-homepage: https://github.com/Q-Claw/gemini-cli-video-analysis
+homepage: https://github.com/TypQxQ/gemini-cli-video-analysis
 metadata:
   hermes:
     tags:

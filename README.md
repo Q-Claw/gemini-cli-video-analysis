@@ -65,7 +65,7 @@ You can use this repository as a standalone set of scripts, or install it as a l
 If Hermes has terminal and file tools available, just ask:
 
 ```text
-Install https://github.com/Q-Claw/gemini-cli-video-analysis and verify it works.
+Install https://github.com/TypQxQ/gemini-cli-video-analysis and verify it works.
 ```
 
 A sensible Hermes Agent should clone the repository, install it as a local skill, and verify that the helper script or skill is usable.
@@ -75,7 +75,7 @@ A sensible Hermes Agent should clone the repository, install it as a local skill
 If you want to install it manually inside your local Hermes setup:
 
 ```bash
-git clone https://github.com/Q-Claw/gemini-cli-video-analysis.git
+git clone https://github.com/TypQxQ/gemini-cli-video-analysis.git
 mkdir -p ~/.hermes/skills/media/gemini-cli-video-analysis
 cp gemini-cli-video-analysis/SKILL.md ~/.hermes/skills/media/gemini-cli-video-analysis/
 mkdir -p ~/.hermes/skills/media/gemini-cli-video-analysis/scripts
@@ -96,7 +96,7 @@ hermes -s gemini-cli-video-analysis
 Clone the repository to use the helper script directly:
 
 ```bash
-git clone https://github.com/Q-Claw/gemini-cli-video-analysis.git
+git clone https://github.com/TypQxQ/gemini-cli-video-analysis.git
 cd gemini-cli-video-analysis
 chmod +x scripts/gemini-video-analyze.sh
 ```
