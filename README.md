@@ -52,7 +52,7 @@ The script behavior can be customized via environment variables:
 
 ## Installation
 
-You can use this repository as a standalone set of scripts, or install it as a skill for the Hermes agent.
+You can use this repository as a standalone set of scripts, or install it as a local skill for Hermes.
 
 ### Option 1: Standalone Repository
 
@@ -64,25 +64,9 @@ cd gemini-cli-video-analysis
 chmod +x scripts/gemini-video-analyze.sh
 ```
 
-### Option 2: Install from a Hermes Tap / Custom Skills Repository
+### Option 2: Install as a Hermes Local Skill
 
-If you have configured a Hermes tap or custom skills repository that includes this skill, you can install it via the Hermes CLI.
-
-```bash
-# Add the tap
-hermes skills tap add Q-Claw/hermes-skills
-
-# Search or inspect
-hermes skills search gemini-cli-video-analysis --source github
-hermes skills inspect Q-Claw/hermes-skills/skills/gemini-cli-video-analysis
-
-# Install directly by identifier
-hermes skills install Q-Claw/hermes-skills/skills/gemini-cli-video-analysis
-```
-
-### Option 3: Install as a Hermes Local Skill
-
-If you prefer to install it manually from this cloned repository into your local Hermes environment:
+If you want it available inside your local Hermes setup:
 
 ```bash
 mkdir -p ~/.hermes/skills/media/gemini-cli-video-analysis
@@ -90,6 +74,14 @@ cp SKILL.md ~/.hermes/skills/media/gemini-cli-video-analysis/
 mkdir -p ~/.hermes/skills/media/gemini-cli-video-analysis/scripts
 cp scripts/gemini-video-analyze.sh ~/.hermes/skills/media/gemini-cli-video-analysis/scripts/
 chmod +x ~/.hermes/skills/media/gemini-cli-video-analysis/scripts/gemini-video-analyze.sh
+```
+
+Then load it in Hermes with:
+
+```bash
+hermes -s gemini-cli-video-analysis
+# or inside a session:
+/skill gemini-cli-video-analysis
 ```
 
 ## License
