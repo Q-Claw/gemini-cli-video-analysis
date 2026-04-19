@@ -52,7 +52,11 @@ The script behavior can be customized via environment variables:
 
 ## Installation
 
-Clone the repository:
+You can use this repository as a standalone set of scripts, or install it as a skill for the Hermes agent.
+
+### Option 1: Standalone Repository
+
+Clone the repository to use the helper script directly:
 
 ```bash
 git clone https://github.com/Q-Claw/gemini-cli-video-analysis.git
@@ -60,7 +64,25 @@ cd gemini-cli-video-analysis
 chmod +x scripts/gemini-video-analyze.sh
 ```
 
-### Optional: install as a Hermes local skill
+### Option 2: Install from a Hermes Tap / Custom Skills Repository
+
+If you have configured a Hermes tap or custom skills repository that includes this skill, you can install it via the Hermes CLI.
+
+```bash
+# Add the tap
+hermes skills tap add Q-Claw/hermes-skills
+
+# Search or inspect
+hermes skills search gemini-cli-video-analysis --source github
+hermes skills inspect Q-Claw/hermes-skills/skills/gemini-cli-video-analysis
+
+# Install directly by identifier
+hermes skills install Q-Claw/hermes-skills/skills/gemini-cli-video-analysis
+```
+
+### Option 3: Install as a Hermes Local Skill
+
+If you prefer to install it manually from this cloned repository into your local Hermes environment:
 
 ```bash
 mkdir -p ~/.hermes/skills/media/gemini-cli-video-analysis
