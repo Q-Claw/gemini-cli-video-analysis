@@ -21,7 +21,13 @@ This repository provides:
 
 ## Usage
 
-Run the helper script directly:
+If an agent already has access to the video context, a simple natural-language prompt is often enough:
+
+```text
+Review the pacing and storytelling of the video I sent you.
+```
+
+Run the helper script directly when you want to provide a local file path yourself:
 
 ```bash
 ./scripts/gemini-video-analyze.sh /path/to/video.mp4
@@ -30,7 +36,7 @@ Run the helper script directly:
 Provide a custom prompt:
 
 ```bash
-./scripts/gemini-video-analyze.sh /path/to/video.mp4 "Review the pacing and storytelling of this video."
+./scripts/gemini-video-analyze.sh /path/to/video.mp4 "Review the pacing and storytelling of the video I sent you."
 ```
 
 Display help and configuration options:
