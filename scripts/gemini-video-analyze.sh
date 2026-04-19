@@ -1,13 +1,24 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+COPIED_VIDEO=""
+
+cleanup() {
+  if [[ -n "$COPIED_VIDEO" && -f "$COPIED_VIDEO" ]]; then
+    rm -f "$COPIED_VIDEO"
+  fi
+}
+
+trap cleanup EXIT
+
 show_help() {
   cat << EOF
 Usage: $(basename "$0") [OPTIONS] <path_to_video> [custom_prompt]
 
 Analyze a local video file using the Gemini CLI.
 This script copies the video to a clean workspace to avoid path and git-ignore
-issues that can break multimodal file injection, then runs the analysis.
+issues that can break multimodal file injection, runs the analysis, and then
+removes the temporary copied video.
 
 Options:
   -h, --help    Show this help message and exit
@@ -15,7 +26,7 @@ Options:
 Environment Variables:
   GEMINI_ENV_FILE         Path to an environment file to source (default: ~/.gemini/.env)
   GEMINI_VIDEO_WORKSPACE  Directory to use as the workspace (default: ~/.gemini/video-analysis-workspace)
-  GEMINI_APPROVAL_MODE    Approval mode for Gemini CLI (default: yolo)
+  GEMINI_APPROVAL_MODE    Approval mode for Gemini CLI (default: yolo; optimized for unattended/agent use)
   GEMINI_OUTPUT_FORMAT    Output format for Gemini CLI (default: text)
 
 Examples:
@@ -55,7 +66,7 @@ fi
 
 mkdir -p "$WORKDIR"
 
-ABS_VIDEO_PATH="$(readlink -f "$VIDEO_PATH")"
+ABS_VIDEO_PATH="$(cd "$(dirname "$VIDEO_PATH")" && pwd -P)/$(basename "$VIDEO_PATH")"
 BASENAME="$(basename "$ABS_VIDEO_PATH")"
 STAMP="$(date +%Y%m%d-%H%M%S)"
 COPIED_VIDEO="$WORKDIR/$STAMP-$BASENAME"
@@ -75,6 +86,6 @@ REL_VIDEO="./$(basename "$COPIED_VIDEO")"
 PROMPT="$CUSTOM_PROMPT @{${REL_VIDEO}}"
 
 echo "Workspace: $WORKDIR" >&2
-echo "Video copy: $COPIED_VIDEO" >&2
+echo "Temporary video copy: $COPIED_VIDEO" >&2
 
 gemini -p "$PROMPT" --output-format "$OUTPUT_FORMAT" --approval-mode "$APPROVAL_MODE"

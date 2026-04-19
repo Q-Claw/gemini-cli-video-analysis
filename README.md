@@ -17,7 +17,7 @@ When using the Gemini CLI for video analysis, there are a few common stumbling b
 
 This repository provides:
 - a reusable `SKILL.md` for Hermes-style agent workflows
-- a small `gemini-video-analyze.sh` helper that copies the video to a clean workspace before analysis
+- a small `gemini-video-analyze.sh` helper that copies the video to a clean workspace before analysis and removes the temporary copy afterwards
 
 ## Usage
 
@@ -53,7 +53,7 @@ The script behavior can be customized via environment variables:
 |---|---|---|
 | `GEMINI_ENV_FILE` | `~/.gemini/.env` | Path to an environment file to source before running. |
 | `GEMINI_VIDEO_WORKSPACE` | `~/.gemini/video-analysis-workspace` | Clean directory where videos are copied for analysis. |
-| `GEMINI_APPROVAL_MODE` | `yolo` | Approval mode passed to Gemini CLI (`--approval-mode`). |
+| `GEMINI_APPROVAL_MODE` | `yolo` | Approval mode passed to Gemini CLI (`--approval-mode`). The default is optimized for unattended/agent workflows. |
 | `GEMINI_OUTPUT_FORMAT` | `text` | Output format passed to Gemini CLI (`--output-format`). |
 
 ## Installation
